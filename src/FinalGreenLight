@@ -1,0 +1,24 @@
+public class greenLight
+{
+    public boolean isGreen;
+
+    public boolean getIsGreen()
+    {
+        return isGreen;
+    }//close green getter
+
+    public void setIsGreen(boolean newIsGreen)
+    {
+        isGreen = newIsGreen;
+    }//close green setter
+
+    public greenLight()
+    {
+        this.isGreen = isGreen;
+    }//close green constructor
+
+
+
+
+}//close class (unused mostly)
+//noah triche
