@@ -1,0 +1,37 @@
+public class roadRage
+{
+    public int rageCount;
+
+    public int getRageCount()
+    {
+        return rageCount;
+    }//close rage getter
+
+    public void setPathGen(int newRageCount)
+    {
+        rageCount = newRageCount;
+    }//close rage setter
+
+    public roadRage()
+    {
+        this.rageCount = rageCount;
+    }//close rage constructor
+
+    public int rageMeter()
+    {
+        int x = rageCount + 1;
+        rageCount = x;
+        return rageCount;
+    }//close rage adding method
+
+
+
+    public String toString()
+    {
+        String output = "";
+        output += "The road-rage level is currently: " + rageCount;
+        return output;
+    }//close toString(unused oops)
+
+}//close class
+//noah triche per 5
