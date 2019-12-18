@@ -1,0 +1,246 @@
+import java.util.Scanner;
+
+public class carDriver
+{
+    public static void main(String []args)
+    {
+        Scanner scan = new Scanner (System.in);
+
+        pathGen rng = new pathGen(0);
+        roadRage countRage = new roadRage();
+        greenLight on = new greenLight();
+
+        String command = "";
+        int rage = countRage.rageMeter();
+        boolean lightCheck = on.getIsGreen();
+
+
+        System.out.println("Press ENTER to start");
+        System.out.println();
+
+
+        for(int i = 0; i <= 10; i++)
+        {
+            int rngNum = rng.generatePaths();
+            command = scan.nextLine();
+
+            if(i == 10)
+            {
+                System.out.println("REVIEW:");
+
+                if(rage > 5)
+                {
+                    System.out.println("You've been preeeeetty reckless, watch out in real life, alright?");
+                    return;
+                }//close greater than result
+                if(rage < 5)
+                {
+                    System.out.println("Not bad, kid. Eyes on the road.");
+                    return;
+                }//close less than result
+            }//close results if
+
+            if(rage >= 7)
+            {
+                for(int i2 = 3; i2 >= 0; i2--)
+                {
+                    command = "e";
+                    //whenever command is set to e, it allows the code to pause instead of running without player choice
+
+                    if(i2 == 3)
+                    {
+                        System.out.println("Since you've been such a terrible driver, there's now an angry mob behind you.");
+                        System.out.println("Will you change your driving habits for the better?");
+
+                        command = scan.nextLine();
+
+                        if(command.equals("no"))
+                        {
+                            command = "e";
+
+                            System.out.print("You did this to yourself, y'know. They'll start ramming you out anger. Want a last Chance? ");
+                            command = scan.nextLine();
+
+                            if(command.equals("no"))
+                            {
+                                System.out.print("You, sir or ma'am, are irredeemable.");
+                                return;
+                            }//close inner if
+                            else if(command.equals("yes"))
+                            {
+                                System.out.print("i knew you'd come around! \nThe rage meter has been lowered to 2, because some people are still mad.");
+                                rage = 2;
+                            }//close inner else if
+                        }//close bad situation command if
+                        else if(command.equals("yes"))
+                        {
+                            System.out.print("Great! Your rage meter has been lowered to 0.");
+                            rage = 0;
+                        }//close else if
+
+                    }//close the i2 check if
+
+                }//close the rage for loop
+
+            }//close the rage cap if
+
+
+
+            if(rngNum == 0)
+            {
+                System.out.println("Your commands are currently: go, no, wait, and yes.");
+
+                for(int count = 3; count >= 0; count--)
+                {
+
+                    if(count == 3)
+                    {
+                        command = "e";
+                        System.out.println("The light is red... what will you do? Wait or go? ");
+
+                        command = scan.nextLine();
+                        if(command.equals("go") || command.equals("no"))
+                        {
+                            System.out.print("Talk about impatient...");
+
+                            System.out.print(" Your road-rage meter is at: " + rage++);
+
+                            count = 0;
+                        }
+                    }//closes count
+
+                    if(count == 2)
+                    {
+                        command = "e";
+
+                        System.out.print("Care to wait a little longer? ");
+
+                        command = scan.nextLine();
+                        if(command.equals("no") || command.equals("go"))
+                        {
+                            System.out.print("To think you could've lasted...");
+
+                            System.out.print(" Your road-rage meter is at: " + rage++);
+
+                            count = 0;
+                        }//closes bad situation if
+                    }//closes count 2 if
+
+                    if(count == 1)
+                    {
+                        command = "e";
+
+                        System.out.print("The light is green! Will you drive??");
+
+                        command = scan.nextLine();
+                        if(command.equals("no") || command.equals("wait"))
+                        {
+                            System.out.print("Well that's just rude. You did this to yourself.");
+
+                            System.out.print(" Your road-rage meter is at: " + rage + 2);
+
+                            count = 0;
+                        }//closes bad if
+
+                        if(command.equals("go") || command.equals("yes"))
+                        {
+                            System.out.print("You've been a good driver so far!");
+                        }//closes good if
+                    }//closes count 1 if
+                }//close for loop to control the cycling through the situation
+            }//close the first situation
+
+            else if(rngNum == 1)
+            {
+                command = "e";
+
+
+
+                System.out.println("Your commands are currently: left, right, yes, no");
+                System.out.println("Looks like a busy intersection... with a red light. Are you gonna turn?");
+
+                command = scan.nextLine();
+
+                if(command.equals("yes"))
+                {
+                    command = "e";
+
+                    System.out.println("You're lucky no one came through during that turn...");
+                }
+                else if(command.equals("no"))
+                {
+                        command = "e";
+
+                        System.out.println("Guess you're going straight then, or will you? ");
+                        command = scan.nextLine();
+
+                        if(command.equals("no"))
+                        {
+                            System.out.println("Welp, that's a juke in the mind of the driver behind you.");
+                            System.out.println("Your road-rage meter is at: " + rage++);
+                        }
+
+                }
+
+
+
+            }//close the second situation
+            else
+            {
+
+                command = "e";
+
+                System.out.println("Your commands are currently: well, poorly, left, right");
+                System.out.println("This seems to be a freeway.. which way will you turn?");
+
+                command = scan.nextLine();
+
+                if(command.equals("left"))
+                {
+                    command = "e";
+                    System.out.println("Left it is, how will you make this turn?");
+
+                    command = scan.nextLine();
+                    if(command.equals("poorly"))
+                    {
+                        System.out.println("Great, now the car's wrecked.");
+                        System.out.println("Your road-rage meter is at: " + rage++);
+
+                    }
+                    else if(command.equals("well"))
+                    {
+                        System.out.println("Smooth moves, my dude.");
+                    }
+                }
+                else if(command.equals("right"))
+                {
+                    command = "e";
+                    System.out.println("Righty tighty,  care to take an exit?");
+
+                    command = scan.nextLine();
+                    if(command.equals("no"))
+                    {
+                        System.out.println("Well you've definetly juked the guy behind you.");
+                        System.out.println("Your road-rage meter is at: " + rage++);
+
+                    }
+                    else if(command.equals("yes"))
+                    {
+                        System.out.println("Look at you, being a good driver and stuff!");
+                    }
+
+
+                }
+
+
+            }//close the third situation
+        }//close main for loop
+
+
+
+
+
+    }//close void
+
+}//close class
+//noah triche per 5
