@@ -1,0 +1,23 @@
+public class redLight
+{
+
+    public boolean isRed;
+
+    public boolean getIsRed()
+    {
+        return isRed;
+    }//close red getter
+
+    public void setIsGreen(boolean newIsRed)
+    {
+        isRed = newIsRed;
+    }//close red setter
+
+    public redLight()
+    {
+        this.isRed = isRed;
+    }//close red constructor
+
+
+}//close class (unused)
+//noah triche per 5
