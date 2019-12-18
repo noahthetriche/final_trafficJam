@@ -1,0 +1,5 @@
+public interface frRage
+{
+     void rage (int rage); //oops sorry
+}
+//noah triche per 5
